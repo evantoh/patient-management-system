@@ -1,9 +1,12 @@
 from django.shortcuts import render,redirect
 from .forms import UpdateDocForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def welcome(request):
     return render(request,'welcome.html')
+
+@login_required(login_url='/accounts/login/')    
 def updatedoc(request):
     current_user = request.user
     if request.method == 'POST':

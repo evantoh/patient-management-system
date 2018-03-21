@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import UpdateDocForm
+from .forms import UpdateDocForm,addPatientForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Doctor
@@ -33,7 +33,7 @@ def addpatient(request):
             new_doc = form.save(commit = False)
             # new_doc.user_id = current_user
             new_doc.save()
-            return redirect('welcome') 
+            return redirect('index') 
     else:
         form = UpdateDocForm()
     return render(request,'patient/profile.html',{"form":form})

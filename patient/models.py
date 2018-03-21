@@ -41,3 +41,17 @@ class Patient(models.Model):
     class Meta:
         ordering = ['first_name']
 
+
+
+class Treatment(models.Model):
+    patient = models.ForeignKey(Patient, null=True)
+    doctor = models.ForeignKey(Doctor, null=True)
+    cash_charged = models.IntegerField(default=0)
+    date = models.DateTimeField(auto_now=True)
+    symptoms = models.CharField(max_length=500, null=True)
+    diagnosis = models.CharField(max_length=1000)
+    recommendations = models.CharField(max_length=1000, null=True)
+
+    class Meta:
+        ordering = ['-date']
+

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Doctor,Patient
+from .models import Doctor,Patient,Treatment
 
 class UpdateDocForm(forms.ModelForm):
     class Meta:
@@ -10,3 +10,9 @@ class addPatientForm(forms.ModelForm):
     class Meta:
         model = Patient
         fields = ['profile_photo', 'first_name','last_name', 'date_of_birth', 'email','phone_number','phone_number']
+
+class TreatmentForm(forms.ModelForm):
+    class Meta:
+        model = Treatment
+        fields = ['patient', 'doctor','', 'date_of_birth', 'email','phone_number','phone_number']
+        fields = ['patient', 'doctor','cash_charged','date','symptoms','diagnosis','recommendations']

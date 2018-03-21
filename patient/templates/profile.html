@@ -1,0 +1,39 @@
+{% extends 'base.html' %}{% block content %}
+<div class="container-fluid" style="margin-top:50px; color:black">
+  <div class="row">
+    <div class="col-sm-9">
+
+      <div class="col-sm-4>
+        <div class="container"">
+          <img src="{{doctor.profile_photo.url}}" alt="{{doctor.name}}" style="border-radius:40px;">
+        </div>
+        </div>
+      </div>
+      <div class="col-sm-5">
+        <div class="box">
+          <h4><span id="titles">First Name:</span> Dr. {{doctor.first_name}}</h4>
+          <h4><span id="titles">Last Name:</span> Dr. {{doctor.last_name}}</h4>
+          <h4><span id="titles">Email: </span>{{user.email}}</h4>
+          <h4><span id="titles">HOSPITAL: </span>{{doctor.hospital}}</h4>
+          <h4><span id="titles">Contact: </span>0{{doctor.phone_number}}</h4>
+          <h4><span id="titles">Specialty: </span>{{doctor.specialty}}</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="row" style="height:70px">
+
+      </div>
+      <a href="">
+      <i class="fa fa-cogs" style="margin-right:10px; font-size:30px; color:#ccc"></i><input type="submit" name="" value="Update Profile" class="btn btn-default">
+    </a>
+      <div class="row">
+
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+  </div>
+</div>
+{% endblock %}

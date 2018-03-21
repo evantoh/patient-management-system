@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import UpdateDocForm,addPatientForm
+from .forms import UpdateDocForm,addPatientForm,TreatmentForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Doctor
@@ -37,4 +37,17 @@ def addpatient(request):
     else:
         form = UpdateDocForm()
     return render(request,'patient/profile.html',{"form":form})
+
+
+
+def treatment(request):
+    current_user =request.user
+    if request.method == 'POST':
+        form = TreatmentForm(request.POST, request.FILES)
+        if form.is_valid():
+            treatment = form.save(commit=False)
+            treatment.save()
+    else:
+        form = TreatmentForm()
+    return render(request, 'treatment/treatment.html', { 'form':form})
 

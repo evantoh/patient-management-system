@@ -14,5 +14,4 @@ class addPatientForm(forms.ModelForm):
 class TreatmentForm(forms.ModelForm):
     class Meta:
         model = Treatment
-        fields = ['patient', 'doctor','', 'date_of_birth', 'email','phone_number','phone_number']
-        fields = ['patient', 'doctor','cash_charged','date','symptoms','diagnosis','recommendations']
+        fields = ['cash_charged','symptoms','diagnosis','recommendations']

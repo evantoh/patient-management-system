@@ -69,3 +69,14 @@ def allpatient(request):
     patients=Patient.objects.all()
     return render(request,'patient/all-patients.html',{'patients':patients})
 
+def search_results(request):
+    if 'patient' in request.GET and request.GET["patient"]:
+        search_term = request.GET.get("patient")
+        searched_patients = Patient.search_by_first_name(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html',{"message":message,"patients": searched_patients})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search.html',{"message":message})

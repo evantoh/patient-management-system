@@ -38,7 +38,7 @@ class Medicine(models.Model):
 
 
 class Patient(models.Model):
-    first_name = models.CharField(max_length =30,null=True)
+    first_name = models.CharField(max_length =30)
     last_name = models.CharField(max_length =30,null=True)
     date_of_birth = models.DateField(null=True)
     phone_number = models.IntegerField(default=254,null=True)
@@ -58,6 +58,11 @@ class Patient(models.Model):
 
     class Meta:
         ordering = ['first_name']
+
+    @classmethod
+    def search_by_first_name(cls,search_term):
+        results = cls.objects.filter(first_name__icontains=search_term)
+        return results
 
 
 

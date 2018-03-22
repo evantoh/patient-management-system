@@ -1,0 +1,30 @@
+{%extends 'base.html'%} 
+{% block content %}
+<div class="container">
+
+  <div class="row">
+    {% if patients%}
+      <h2>Found {{ patients|length }} of searched term {{message}}</h2>
+    {% else %}
+      <h2> Found 0 articles for the search term {{message}}</h2>
+    {% endif %}
+
+  </div>
+
+  <div class="row">
+
+  {% if patients %}
+    {% for patient in patients %}
+      <div class="col-sm-6 col-md-3">
+            <div class="profile-image"><img src="{{patient.profile_photo.url}}" alt="{{patient.name}}" /></div>
+          <h1>{{patient.first_name}}</h1>
+          <h1>{{patient.email}}</h1>
+             <a href="{% url 'singlePatient' patient.first_name %}"> 
+            <input type="button" name="" value="View Details" class="btn btn-default btn-block btn-primary">
+            </a>
+      </div>
+    {% endfor %}
+  {% endif %}
+  </div>
+</div>
+{% endblock %}

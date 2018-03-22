@@ -4,13 +4,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns=[
-    url('^$',views.welcome,name='welcome'),
-    url('^accounts/profile$',views.profile,name = 'profile'),
-    url('^updatedoc',views.welcome,name='updatedoc'),
-    url('^addpatient',views.addpatient,name='addpatient'),
-    url('^all/patients',views.allpatient,name='allpatients'),
-    url('^treatment',views.treatment,name='treatment'),
-
+    url(r'^$',views.welcome,name='welcome'),
+    url(r'^accounts/profile$',views.profile,name = 'profile'),
+    url(r'^updatedoc',views.welcome,name='updatedoc'),
+    url(r'^addpatient',views.addpatient,name='addpatient'),
+    url(r'^all/patients',views.allpatient,name='allpatients'),
+    url(r'^treatment',views.treatment,name='treatment'),
+    url(r'^search$',views.search_results,name='search_patient'),
     url(r'^new/profile/(?P<username>[-_\w.]+)$',views.update_profile, name='updateProfile'),
 ]
 if settings.DEBUG:

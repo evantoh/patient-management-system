@@ -38,15 +38,10 @@ def addpatient(request):
         newmedform = NewMedicineForm(request.POST, request.FILES)
         if nextkinform.is_valid() and addpatform.is_valid() and newmedform.is_valid():
             next_of_kin = nextkinform.save()
-            next_of_kin.save()
-            return redirect('/')
-        elif newmedform.is_valid():
             medicine = newmedform.save()
-            medicine.save()
-            return redirect('/')
-
-        elif addpatform.is_valid():
             patient = addpatform.save()
+            next_of_kin.save()
+            medicine.save()
             patient.save()
             return redirect('/')
 
@@ -69,5 +64,8 @@ def treatment(request):
         form = TreatmentForm()
     return render(request, 'treatment/treatment.html', { 'form':form})
 
-
+@login_required(login_url='/accounts/login')
+def allpatient(request):
+    patients=Patient.objects.all()
+    return render(request,'patient/all-patients.html',{'patients':patients})
 

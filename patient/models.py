@@ -30,8 +30,8 @@ class NextOfKin(models.Model):
 
 
 class Medicine(models.Model):
-    name = models.CharField(max_length=200)
-    date_given = models.DateTimeField()
+    name = models.CharField(max_length=200,null=True,blank=True)
+    date_given = models.DateTimeField(null=True)
     doctor_prescribed = models.ForeignKey(Doctor)
     def __str__(self):
         return self.name

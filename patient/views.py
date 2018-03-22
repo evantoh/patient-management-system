@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from .forms import UpdateDocForm,addPatientForm,TreatmentForm,NewNextOfKinForm,NewMedicineForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .models import Doctor,Medicine,NextOfKin
+from .models import Doctor,Medicine,NextOfKin,Patient
 # Create your views here.
 @login_required(login_url='/accounts/login')
 def profile(request):
@@ -31,54 +31,29 @@ def update_profile(request, username):
 @login_required(login_url='/accounts/login')
 def addpatient(request):
     current_user = request.user
-    doctor = Doctor.objects.get(user_id=current_user.id)
+    doctor = Doctor.objects.get(id='1')
     if request.method == 'POST':
-        nform = NewNextOfKinForm(request.POST, request.FILES)
-        form = addPatientForm(request.POST, request.FILES)
-        mform = NewMedicineForm(request.POST, request.FILES)
-        if mform.is_valid() and nform.is_valid() and form.is_valid():
-            next_of_kin = nform.save()
+        nextkinform = NewNextOfKinForm(request.POST, request.FILES)
+        addpatform = addPatientForm(request.POST, request.FILES)
+        newmedform = NewMedicineForm(request.POST, request.FILES)
+        if nextkinform.is_valid() and addpatform.is_valid() and newmedform.is_valid():
+            next_of_kin = nextkinform.save()
             next_of_kin.save()
-        elif mform.is_valid():
-            medicine = mform.save()
+        elif newmedform.is_valid():
+            medicine = newmedform.save()
             medicine.doctor =doctor
             medicine.save()
 
-        elif form.is_valid():
-            patient = form.save()
+        elif addpatform.is_valid():
+            patient = addpatform.save()
             patient.doctor = doctor
             patient.save()
 
-        elif adform.is_valid():
-            allergies = adform.save()
-            allergies.save()
-        return redirect('newPatient')
-        current_user = request.user
-    doctor = Doctor.objects.get(user_id=current_user.id)
-    if request.method == 'POST':
-        nform = NewNextOfKinForm(request.POST, request.FILES)
-        form = NewPatientForm(request.POST, request.FILES)
-        mform = NewMedicineForm(request.POST, request.FILES)
-        adform = AllergiesAndDirectivesForm(request.POST, request.FILES)
-        if mform.is_valid() and nform.is_valid() and form.is_valid():
-            next_of_kin = nform.save()
-            next_of_kin.save()
-        elif mform.is_valid():
-            medicine = mform.save()
-            medicine.doctor =doctor
-            medicine.save()
-
-        elif form.is_valid():
-            patient = form.save()
-            patient.doctor = doctor
-            patient.save()
-
-        elif adform.is_valid():
-            allergies = adform.save()
-            allergies.save()
-        return redirect('newPatient')
-        
-    return render(request,'patient/profile.html',{"form":form})
+    else:
+        addpatform = addPatientForm()
+        nextkinform = NewNextOfKinForm()
+        newmedform = NewMedicineForm()
+    return render(request, 'patient/profile.html', {'doctor':doctor, 'addpatform':addpatform,'nextkinform':nextkinform,'newmedform':newmedform})
 
 @login_required(login_url='/accounts/login')
 def treatment(request):

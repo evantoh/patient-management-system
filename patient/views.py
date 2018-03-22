@@ -31,7 +31,7 @@ def update_profile(request, username):
 @login_required(login_url='/accounts/login')
 def addpatient(request):
     current_user = request.user
-    doctor = Doctor.objects.get(id='1')
+    # doctor = Patient.objects.get(id='1')
     if request.method == 'POST':
         nextkinform = NewNextOfKinForm(request.POST, request.FILES)
         addpatform = addPatientForm(request.POST, request.FILES)
@@ -39,21 +39,22 @@ def addpatient(request):
         if nextkinform.is_valid() and addpatform.is_valid() and newmedform.is_valid():
             next_of_kin = nextkinform.save()
             next_of_kin.save()
+            return redirect('/')
         elif newmedform.is_valid():
             medicine = newmedform.save()
-            medicine.doctor =doctor
             medicine.save()
+            return redirect('/')
 
         elif addpatform.is_valid():
             patient = addpatform.save()
-            patient.doctor = doctor
             patient.save()
+            return redirect('/')
 
     else:
         addpatform = addPatientForm()
         nextkinform = NewNextOfKinForm()
         newmedform = NewMedicineForm()
-    return render(request, 'patient/profile.html', {'doctor':doctor, 'addpatform':addpatform,'nextkinform':nextkinform,'newmedform':newmedform})
+    return render(request, 'patient/profile.html', { 'addpatform':addpatform,'nextkinform':nextkinform,'newmedform':newmedform})
 
 @login_required(login_url='/accounts/login')
 def treatment(request):

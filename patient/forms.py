@@ -4,12 +4,12 @@ from .models import Doctor,Patient,Treatment,NextOfKin,Medicine
 class UpdateDocForm(forms.ModelForm):
     class Meta:
         model = Doctor
-        fields = ['profile_photo', 'first_name','last_name', 'hospital', 'email','title','phone_number']
+        fields = ['profile_photo', 'first_name','last_name', 'hospital', 'email','title']
 
 class addPatientForm(forms.ModelForm):
     class Meta:
         model = Patient
-        fields = ['profile_photo', 'first_name','last_name', 'date_of_birth', 'email','phone_number','phone_number']
+        fields = ['profile_photo', 'first_name','last_name', 'email','gender']
 
 class TreatmentForm(forms.ModelForm):
     class Meta:
@@ -19,8 +19,8 @@ class TreatmentForm(forms.ModelForm):
 class NewNextOfKinForm(forms.ModelForm):
     class Meta:
         model = NextOfKin
-        fields = ['relationship','phone_number','email']
+        fields = ['relationship','email']
 class NewMedicineForm(forms.ModelForm):
     class Meta:
         model = Medicine
-        fields = ['name','date_given','doctor_prescribed']
+        fields = ['doctor_prescribed']

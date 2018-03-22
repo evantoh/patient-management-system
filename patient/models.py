@@ -15,7 +15,7 @@ class Doctor(models.Model):
     email = models.EmailField(null=True)
 
     def __str__(self):
-        return self.first_name
+        return self.title
 
     class Meta:
         ordering = ['first_name']

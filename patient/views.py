@@ -6,25 +6,29 @@ from .models import Doctor
 
 # Create your views here.
 @login_required(login_url='/accounts/login')
-def index(request):
+def profile(request):
     current_user = request.user
-    doctor = Doctor.objects.get()
-    return render(request, 'profile.html', {'doctor':doctor})
+    doctor = Doctor.objects.get(id='1')
+    return render(request, 'profile.html', {'doctor':doctor,'current_user':current_user})
 
 @login_required(login_url='/accounts/login')    
 def welcome(request):
     return render(request,'welcome.html')
+
 @login_required(login_url='/accounts/login')
-def updatedoc(request):
+def update_profile(request, username):
+    current_user = request.user
+    username = current_user.username
+    doctor = Doctor.objects.get(id='1')
     if request.method == 'POST':
-        form = UpdateDocForm(request.POST,request.FILES)
+        form = UpdateDocForm(request.POST, request.FILES)
         if form.is_valid():
-            new_doc = form.save(commit = False)
-            new_doc.save()
-            return redirect('index') 
+            doctor = form.save()
+        return redirect('updatedoc')
     else:
         form = UpdateDocForm()
-    return render(request,'doctor/profile.html',{"form":form})
+    return render(request, 'doctor/profile.html', {'form':form, 'doctor':doctor})
+
 @login_required(login_url='/accounts/login')
 def addpatient(request):
     # current_user = request.user

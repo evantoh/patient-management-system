@@ -3,14 +3,15 @@
   <div class="row">
     <div class="col-sm-9">
 
-      <div class="col-sm-4>
-        <div class="container"">
-          <img src="{{doctor.profile_photo.url}}" alt="{{doctor.name}}" style="border-radius:40px;">
+      <div class="col-lg-3">
+        <h1>WELCOME  Dr <strong>{{current_user.username}}</strong> </h1>
+        <div class="container">
+          <img src="{{doctor.profile_photo.url}}" alt="{{doctor.name}}" style="border-radius: 142px;height: 288px;width: 370px;">
         </div>
         </div>
       </div>
-      <div class="col-sm-5">
-        <div class="box">
+      <div class="col-lg-3">
+        <div class="box" style="    margin-top: 90px;font-style: italic;font-weight: bold;margin-left: 29px">
           <h4><span id="titles">First Name:</span> Dr. {{doctor.first_name}}</h4>
           <h4><span id="titles">Last Name:</span> Dr. {{doctor.last_name}}</h4>
           <h4><span id="titles">Email: </span>{{user.email}}</h4>
@@ -24,7 +25,7 @@
       <div class="row" style="height:70px">
 
       </div>
-      <a href="">
+      <a href="{% url 'updateProfile' user.username %}">
       <i class="fa fa-cogs" style="margin-right:10px; font-size:30px; color:#ccc"></i><input type="submit" name="" value="Update Profile" class="btn btn-default">
     </a>
       <div class="row">

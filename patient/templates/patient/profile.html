@@ -7,7 +7,8 @@
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-             {% bootstrap_form form%}
+             {% bootstrap_form addpatform%}{% bootstrap_form nextkinform%}
+             {% bootstrap_form newmedform%}
             <input type="submit" class="btn btn-primary btn-sm" value="Submit">
             <input type="hidden" name="next" value="{{next}}">
         </form>

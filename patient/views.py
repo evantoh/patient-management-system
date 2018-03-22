@@ -2,8 +2,7 @@ from django.shortcuts import render,redirect
 from .forms import UpdateDocForm,addPatientForm,TreatmentForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .models import Doctor
-
+from .models import Doctor,Medicine,NextOfKin
 # Create your views here.
 @login_required(login_url='/accounts/login')
 def profile(request):

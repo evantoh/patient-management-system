@@ -21,6 +21,22 @@ class Doctor(models.Model):
         ordering = ['first_name']
 
 
+class NextOfKin(models.Model):
+    relationship = models.CharField(max_length=50)
+    phone_number = models.IntegerField(default=0)
+    email = models.EmailField()
+    def __str__(self):
+        return self.phone_number
+
+
+class Medicine(models.Model):
+    name = models.CharField(max_length=200)
+    date_given = models.DateTimeField()
+    doctor_prescribed = models.ForeignKey(Doctor)
+    def __str__(self):
+        return self.name
+
+
 class Patient(models.Model):
     first_name = models.CharField(max_length =30)
     last_name = models.CharField(max_length =30)
@@ -32,6 +48,8 @@ class Patient(models.Model):
     email = models.EmailField()
     blood_group = models.CharField(max_length=5)
     doctor = models.ForeignKey(Doctor, null=True)
+    next_of_kin = models.ForeignKey(NextOfKin, null=True)
+    medications = models.ForeignKey(Medicine, null=True)
     profile_photo = models.ImageField(upload_to='patients_photo/', null=True)
 
 

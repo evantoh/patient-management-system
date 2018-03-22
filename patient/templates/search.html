@@ -16,12 +16,15 @@
     {% for patient in patients %}
       <div class="col-sm-3 col-md-4">
             <div class="profile-image"><img src="{{patient.profile_photo.url}}" alt="{{patient.name}}" /></div>
-          <h1>first name: {{patient.first_name}}</h1>
-          <h1>last_name: {{patient.last_name}}</h1>
-          <h1>phone_number: {{patient.phone_number}}</h1>
-          <h1>email: {{patient.email}}</h1>
-          <h1>gender: {{patient.gender}}</h1>
-          <h1>next_of_kin: {{patient.next_of_kin}}</h1>
+          <h3>first name: {{patient.first_name}}</h3>
+          <h3>last_name: {{patient.last_name}}</h3>
+          <h3>phone_number: {{patient.phone_number}}</h3>
+          <h3>email: {{patient.email}}</h3>
+          <h3>gender: {{patient.gender}}</h3>
+          <h3>next_of_kin: {{patient.next_of_kin}}</h3>
+          <a href="{% url 'newTreatment' %}">
+            <input type="button" name="" value="Treat patient" class="btn btn-default btn-block btn-primary">
+            </a>
       </div>
     {% endfor %}
   {% endif %}

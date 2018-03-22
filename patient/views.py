@@ -59,7 +59,7 @@ def treatment(request):
         if form.is_valid():
             treatment = form.save(commit=False)
             treatment.save()
-            # return redirect('') 
+            return redirect('/') 
     else:
         form = TreatmentForm()
     return render(request, 'treatment/treatment.html', { 'form':form})
@@ -69,6 +69,7 @@ def allpatient(request):
     patients=Patient.objects.all()
     return render(request,'patient/all-patients.html',{'patients':patients})
 
+@login_required(login_url='/accounts/login')
 def search_results(request):
     if 'patient' in request.GET and request.GET["patient"]:
         search_term = request.GET.get("patient")

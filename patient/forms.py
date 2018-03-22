@@ -9,7 +9,7 @@ class UpdateDocForm(forms.ModelForm):
 class addPatientForm(forms.ModelForm):
     class Meta:
         model = Patient
-        fields = ['profile_photo', 'first_name','last_name', 'email','gender']
+        fields = ['profile_photo', 'first_name','last_name', 'email','gender','nhif_number']
 
 class TreatmentForm(forms.ModelForm):
     class Meta:

@@ -38,8 +38,9 @@ class Medicine(models.Model):
 
 
 class Patient(models.Model):
-    first_name = models.CharField(max_length =30)
+    first_name = models.CharField(max_length =30,blank=True,null=True)
     last_name = models.CharField(max_length =30,null=True)
+    nhif_number=models.IntegerField(default=0)
     date_of_birth = models.DateField(null=True)
     phone_number = models.IntegerField(default=254,null=True)
     gender = models.CharField(max_length=6,null=True)

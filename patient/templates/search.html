@@ -12,16 +12,16 @@
   </div>
 
   <div class="row">
-
   {% if patients %}
     {% for patient in patients %}
-      <div class="col-sm-6 col-md-3">
+      <div class="col-sm-3 col-md-4">
             <div class="profile-image"><img src="{{patient.profile_photo.url}}" alt="{{patient.name}}" /></div>
-          <h1>{{patient.first_name}}</h1>
-          <h1>{{patient.email}}</h1>
-             <a href="{% url 'singlePatient' patient.first_name %}"> 
-            <input type="button" name="" value="View Details" class="btn btn-default btn-block btn-primary">
-            </a>
+          <h1>first name: {{patient.first_name}}</h1>
+          <h1>last_name: {{patient.last_name}}</h1>
+          <h1>phone_number: {{patient.phone_number}}</h1>
+          <h1>email: {{patient.email}}</h1>
+          <h1>gender: {{patient.gender}}</h1>
+          <h1>next_of_kin: {{patient.next_of_kin}}</h1>
       </div>
     {% endfor %}
   {% endif %}

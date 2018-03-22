@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block content %}
+<div class="body">
+  <div class="left-img2"><img src="{{patient.profile_pic.url}}" alt="" /></div>
+  <div class="right-content">
+    <div class="content-arrow"></div>
+    <div class="content-container">
+      <h2>{{patient.last_name|upper}}</h2>
+      <div class="bot-view">
+        <div class="date" style="color: #eee;">
+          {{patient.gender}} </span>
+        </div>
+        <div class="info" style="color: #eee;">
+          <div>
+            <span style="color: #eee;">{{patient.email}}</span>
+            <div class="footer">
+              <div id="buttons">
+                <a href="#" class="btn btn-default btn-block" style="color:blueviolet">Copy Image link <i class="glyphicon glyphicon-paperclip"></i>
+              </a></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %} 

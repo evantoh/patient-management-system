@@ -16,7 +16,7 @@
 </head>
 
 <body style="margin-top:2%;"> 
-    <nav class="style navbar"style ="background-color: #1d802e;
+    <nav class="style navbar"style ="background-color: #1a4227;;
     padding-top: 50px;">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -32,10 +32,10 @@
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="">PROFILE</a></li>
-                <li class="active"><a href="{% url 'addpatient'%}">ADD PATIENT</a></li>
+                <li class=""><a href="{% url 'addpatient'%}">ADD PATIENT</a></li>
                 <li class="active"><a href="{% url 'allpatients'%}">VIEW PATIENTS</a></li>
                 <li class="dropdown">
-                <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
+                <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown"  style="padding-top: 2px;padding-bottom: 17px;margin-left: 9x;padding: 20px';"role="button" aria-expanded="false">Account
                             <span class="caret"></span>
                         </a>
                 <ul class="dropdown-menu" role="menu">
@@ -56,7 +56,7 @@
               </li>
               {% endif %}
 
-              <form class="form-inline my-2 my-lg-0" action="{% url 'search_patient' %}" style="padding-left:20%;margin-left: 20%;">
+              <form class="form-inline my-2 my-lg-0" action="{% url 'search_patient' %}" style="padding-left: 20%;margin-left: 50%;">
                   <input class="form-control mr-sm-2" type="search" name="patient"  placeholder="Search patient">
                   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
               </form>

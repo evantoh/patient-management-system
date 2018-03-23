@@ -2,29 +2,34 @@
 {% load staticfiles%}{% load bootstrap3 %}
 {% block content %}
 {{block.super}}
-<div class="container" style="margin-top:3%;">
+<div class="container" style="margin-top:-3px;width: 100%;height: 900px;
+background-color: rgba(0,0,0,0.7);padding-top: 54px;">
     
     <div class="col-xs-0 col-sm-0 col-md-2 col-lg-2 col-xl-2">
 
       
     </div>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-        <form method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data" style="display: inline-block;
+        max-width: 100%;
+        margin-bottom: 5px;
+        font-weight: 700;
+        color: lemonchiffon">
             <div class="patient">
-                <h5 style="display: block;font-size: 30px;text-align:center;margin-bottom: 10px;">Patient Information</h5>
+                <h5 style="display: block;font-size: 30px;text-align:center;margin-bottom: 10px;color:azure;">Patient Information</h5>
                     {% csrf_token %}
                     {% bootstrap_form addpatform%}
             </div>
             <div class="next_of_kin">
-                    <h5 style="display: block;font-size: 30px;text-align:center;margin-bottom: 10px;">Next of kin</h5> 
+                    <h5 style="display: block;font-size: 30px;text-align:center;margin-bottom: 10px;color:azure;">Next of kin</h5> 
                     {% bootstrap_form nextkinform%}
 
             </div>
             <div class="medical_precs">
-                    <h5 style="display: block;font-size: 30px;text-align:center;margin-bottom: 10px;">doctor prescribed</h5>
+                    <h5 style="display: block;font-size: 30px;text-align:center;margin-bottom: 10px;color:azure;">doctor prescribed</h5>
                     {% csrf_token %}
                     {% bootstrap_form newmedform%}
-            </div>
+            </div> 
              
             
             <input type="submit" class="btn btn-primary btn-sm" value="Submit">
@@ -34,4 +39,28 @@
     </div>
    
 </div>
+<style>
+    *label{
+        display: inline-block;
+        max-width: 100%;
+        margin-bottom: 5px;
+        font-weight: 700;
+        color: lemonchiffon;
+
+    }
+    .form-control {
+        display: block;
+        width: 100%;
+        height: 41px;
+        padding: 12px 30px;
+        font-size: 26px;
+        line-height: 1.42857143;
+        color: #555;
+        background-color: #fff;
+        background-image: none;
+        border: 7px solid #ccc;
+        border-radius: 1px;
+        
+</style>
+
 {% endblock %}
